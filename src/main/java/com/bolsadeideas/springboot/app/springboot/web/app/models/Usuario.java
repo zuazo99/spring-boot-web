@@ -5,6 +5,14 @@ public class Usuario {
     private String apellidos;
     private String email;
 
+    public Usuario() {
+    }
+
+    public Usuario(String nombre, String apellidos, String email) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+    }
 
     public String getNombre() {
         return nombre;
