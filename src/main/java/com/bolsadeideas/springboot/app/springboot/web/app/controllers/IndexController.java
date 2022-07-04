@@ -17,6 +17,12 @@ import java.util.Map;
 @RequestMapping("/app")
 public class IndexController {
 
+    private String textoIndex;
+
+    private String textoPerfil;
+
+    private String textoListar;
+
     // Estas clases van a tener metodos de accion, para manejar peticiones HTTP
     // Se encarga de manejar las peticiones del usuario
     // Mapear relacionar este index a una ruta URL
