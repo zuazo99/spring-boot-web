@@ -2,6 +2,7 @@ package com.bolsadeideas.springboot.app.springboot.web.app.controllers;
 
 
 import com.bolsadeideas.springboot.app.springboot.web.app.models.Usuario;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +18,13 @@ import java.util.Map;
 @RequestMapping("/app")
 public class IndexController {
 
+    @Value("${texto.indexcontroller.index.titulo}")
     private String textoIndex;
 
+    @Value("${texto.indexcontroller.perfil.titulo}")
     private String textoPerfil;
 
+    @Value("${texto.indexcontroller.listar.titulo}")
     private String textoListar;
 
     // Estas clases van a tener metodos de accion, para manejar peticiones HTTP
@@ -30,7 +34,7 @@ public class IndexController {
     public String index(Model model){
         //3 formas distintas --> Model, ModelMap ,Map<> y ModelAndView
        // map.put("titulo", "Hola Spring FrameWork con Map!");
-        model.addAttribute("titulo", "Hola Spring FrameWork con Model!");
+        model.addAttribute("titulo", textoIndex);
         return "index";
     }
 
@@ -42,7 +46,7 @@ public class IndexController {
         usuario.setApellidos("Zuazo");
         usuario.setEmail("gzuazo63@gmail.com");
         model.addAttribute("usuario", usuario);
-        model.addAttribute("titulo", "Perfil del usuario: ".concat(usuario.getNombre()));
+        model.addAttribute("titulo", textoPerfil.concat(usuario.getNombre()));
 
         return "perfil";
     }
@@ -57,7 +61,7 @@ public class IndexController {
 //        usuarios.add(new Usuario("Kepa", "Munitis", "kepa12@gmail.com"));
 //        usuarios.add(new Usuario("Tornado", "Roe", "tornado@gmail.com"));
 
-        model.addAttribute("titulo", "Listado de Usuarios");
+        model.addAttribute("titulo", textoListar);
         //model.addAttribute("usuarios", usuarios);
 
         return "listar";
